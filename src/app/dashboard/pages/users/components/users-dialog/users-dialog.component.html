@@ -1,20 +1,45 @@
-<h1 mat-dialog-title>Crear Usuario</h1>
+<h1 mat-dialog-title>
+{{ user ? "Editar Usuario" : "Crear Usuario" }}    
+</h1>
 
 <div mat-dialog-content>
     <!-- Contenido -->
     <form [formGroup]="userForm">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <mat-form-field>
                     <mat-label>Nombre</mat-label>
                     <input formControlName="name" matInput />
+                    <mat-error>
+                        {{userForm.get("name")?.errors | formErrors }}
+                    </mat-error>
                 </mat-form-field>
             </div>
+            <div class="col-6">
+                <mat-form-field>
+                    <mat-label>Apellido</mat-label>
+                    <input formControlName="lastName" matInput />
+                    <mat-error>
+                        {{userForm.get("lastName")?.errors | formErrors }}
+                    </mat-error>
+    
+                </mat-form-field>
+
+            </div>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput />
+                <mat-error>
+                    {{userForm.get("email")?.errors | formErrors }}                     
+                    </mat-error>
+            </mat-form-field>
         </div>
     </form>
 </div>
 
 <div mat-dialog-actions>
-    <button mat-dialog-close mat-button>Cancelar</button>
-    <button [mat-dialog-close]="userForm.get('name')?.value" mat-button>Guardar</button>
+    <button mat-dialog-close mat-button color="primary">Cancelar</button>
+    <button (click)="onSubmit()" color="primary" [disabled]="userForm.invalid" mat-button>Guardar</button>
 </div>

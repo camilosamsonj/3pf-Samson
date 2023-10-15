@@ -3,3 +3,9 @@
 </button>
 
 {{ userName }}
+
+<app-users-table 
+[dataSource]="users" 
+(deleteUser)="onDeleteUser($event)" 
+(onEditUser)="onEditUser($event)"
+></app-users-table>
