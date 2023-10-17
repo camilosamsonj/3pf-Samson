@@ -10,15 +10,15 @@
     </ng-container>
   
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="name"> 
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+      <td  appFontSizeModify [tamano]="'20px'"  mat-cell *matCellDef="let user"> {{user.name}} </td>
     </ng-container>
 
     <!-- lastName Column -->
     <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef> Apellido </th>
-        <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+        <td appFontSizeModify [tamano]="'20px'"  mat-cell *matCellDef="let user"> {{user.lastName}} </td>
       </ng-container>
   
       <!-- Email Column -->

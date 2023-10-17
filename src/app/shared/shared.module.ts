@@ -10,10 +10,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { FullnamePipe } from './pipes/fullname.pipe';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
+import { FontSizeModifyDirective } from './font-size-modify.directive';
+
 @NgModule({
   declarations: [
     FullnamePipe,
-    FormErrorsPipe
+    FormErrorsPipe,
+    FontSizeModifyDirective
   ],
   imports: [
     CommonModule
@@ -28,7 +31,8 @@ import { FormErrorsPipe } from './pipes/form-errors.pipe';
     MatDialogModule,
     MatTableModule,
     FullnamePipe,
-    FormErrorsPipe
+    FormErrorsPipe,
+    FontSizeModifyDirective,
          
   ]
 })

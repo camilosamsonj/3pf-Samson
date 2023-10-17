@@ -14,7 +14,7 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     UsersComponent,
     UsersDialogComponent,
-    UsersTableComponent
+    UsersTableComponent,
   ],
   imports: [
     CommonModule,

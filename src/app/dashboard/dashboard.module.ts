@@ -5,9 +5,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';import { SharedModule } from '../shared/shared.module';
 import { UsersModule } from './pages/users/users.module';
 
+
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

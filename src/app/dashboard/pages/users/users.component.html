@@ -1,11 +1,12 @@
 <button (click)="openUsersDialog ()" mat-flat-button color="primary">
-    <mat-icon> add </mat-icon>Crear Usuario
+    <mat-icon> add </mat-icon>Registrar Alumno
 </button>
 
-{{ userName }}
+<!-- {{ userName }} -->
 
-<app-users-table 
-[dataSource]="users" 
-(deleteUser)="onDeleteUser($event)" 
-(onEditUser)="onEditUser($event)"
-></app-users-table>
+    <app-users-table
+    [dataSource]="users" 
+    (deleteUser)="onDeleteUser($event)" 
+    (onEditUser)="onEditUser($event)"
+    ></app-users-table>
+
