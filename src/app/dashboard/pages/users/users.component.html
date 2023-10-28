@@ -5,7 +5,7 @@
 <!-- {{ userName }} -->
 
     <app-users-table
-    [dataSource]="users" 
+    [dataSource]="(users$ | async) || []" 
     (deleteUser)="onDeleteUser($event)" 
     (onEditUser)="onEditUser($event)"
     ></app-users-table>
