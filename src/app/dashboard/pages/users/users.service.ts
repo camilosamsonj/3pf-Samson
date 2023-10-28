@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './models';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { RouterTestingHarness } from '@angular/router/testing';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,36 +9,65 @@ import { RouterTestingHarness } from '@angular/router/testing';
 export class UsersService {
 
   private usersSubject = new BehaviorSubject<User[]>([]);
-  users$ = this.usersSubject.asObservable();
 
+
+  users$ = this.usersSubject.asObservable();
+  
   constructor() { 
     this.usersSubject.next([
       {
         id: 1,
         name: "Tony",
         lastName: "Stark",
-        email: "ironman@mail.com",
+        email: "ironman@shield.com",
   
       },
       {
         id: 2,
         name: "Bruce",
         lastName: "Banner",
-        email: "hulk@mail.com",
+        email: "hulk@shield.com",
       },
       {
         id: 3,
         name: "Natasha",
         lastName: "Romanoff",
-        email: "black.widow@mail.com",
-      }
+        email: "black.widow@shield.com",
+      },
+      {
+        id: 4,
+        name: "Steve",
+        lastName: "Rogers",
+        email: "captainamerica@shield.com",
+      },
+      {
+        id: 5,
+        name: "Nick",
+        lastName: "Fury",
+        email: "nickfury@shield.com",
+      },
+      {
+        id: 6,
+        name: "Wanda",
+        lastName: "Maximoff",
+        email: "scarletwitch@shield.com",
+      },
     ]);
    }
 
-  getUsers(): Observable<User[]> {
-    return this.usersSubject.asObservable();
-  
+
+  transformUser(user: User): User {
+    const fullName = `${user.name} ${user.lastName}`;
+    console.log('Transformed User: ', { ...user, fullName});
+    return { ...user, fullName };
   }
+
+  getUsers(): Observable<User[]> {
+    return this.usersSubject.asObservable().pipe(
+      map(users => users.map(user => this.transformUser(user)))
+    );
+  }
+
 
   addUser(user: User): void {
     const currentUsers = this.usersSubject.value;

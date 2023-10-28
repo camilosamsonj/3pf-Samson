@@ -25,8 +25,7 @@ export class UsersTableComponent {
   displayedColumns = 
   [
     'id', 
-    'name', 
-    'lastName', 
+    'fullName', 
     'email', 
     'actions']
 } 

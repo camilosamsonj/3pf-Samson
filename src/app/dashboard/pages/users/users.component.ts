@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
 import { User } from './models';
 import { UsersService } from './users.service';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject} from 'rxjs';
+import { takeUntil, map } from 'rxjs/operators';
 
 
 
@@ -14,8 +15,9 @@ import { Observable, of } from 'rxjs';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
-  userName = '';
+export class UsersComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+  // userName = '';
   users$: Observable<User[]> = new Observable<User[]>();
 
   constructor(
@@ -24,16 +26,24 @@ export class UsersComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.users$ = this.usersService.users$;
-    console.log('Users in component: ', this.users$);
+    this.users$ = this.usersService.users$
+    .pipe(takeUntil(this.destroy$),
+    map((users: User[]) => users.map(user => this.usersService.transformUser(user)))
+    );
+  } 
+
+  ngOnDestroy(): void {
+      this.destroy$.next();
+      this.destroy$.complete();
+
   }
+
   
   openUsersDialog(): void {
     this.matDialog.open(UsersDialogComponent)
     .afterClosed()
     .subscribe({
       next: (v) => {
-        console.log('VALOR: ', v);
         if(!! v ){
           this.usersService.addUser({ ...v, id: new Date().getTime()});
         }
@@ -65,5 +75,7 @@ export class UsersComponent implements OnInit {
     }
     
   }
-  
+
+
+
 }

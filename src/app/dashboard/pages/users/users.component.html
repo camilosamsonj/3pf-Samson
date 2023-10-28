@@ -2,11 +2,9 @@
     <mat-icon> add </mat-icon>Registrar Alumno
 </button>
 
-<!-- {{ userName }} -->
 
     <app-users-table
     [dataSource]="(users$ | async) || []" 
     (deleteUser)="onDeleteUser($event)" 
     (onEditUser)="onEditUser($event)"
     ></app-users-table>
-
