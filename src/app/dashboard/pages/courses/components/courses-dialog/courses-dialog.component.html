@@ -1,1 +1,52 @@
-<p>courses-dialog works!</p>
+<h1 mat-dialog-title>
+    {{ course ? "Editar Curso" : "Crear Registro de Curso" }}    
+    </h1>
+    
+    <div mat-dialog-content>
+        <!-- Contenido -->
+        <form [formGroup]="courseForm">
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field  class="w-100">
+                        <mat-label>Nombre</mat-label>
+                        <input formControlName="name" matInput />
+                        <div *ngIf="courseForm.get('name')?.hasError('required') && courseForm.get('name')?.touched">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="courseForm.get('name')?.hasError('minlength') && courseForm.get('name')?.touched">
+                            El nombre debe tener como mínimo 3 caracteres.
+                        </div>
+                    </mat-form-field>
+                    
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>Fecha de Inicio</mat-label>
+                        <input formControlName="startDate" matInput [matDatepicker]="picker" placeholder="Selecciona una Fecha"/>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <div *ngIf="courseForm.get('startDate')?.hasError('required') && courseForm.get('name')?.touched">
+                            Debes seleccionar una fecha.
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>Fecha de Término</mat-label>
+                        <input formControlName="endDate" matInput [matDatepicker]="picker2" />
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                        <div *ngIf="courseForm.get('startDate')?.hasError('required') && courseForm.get('name')?.touched">
+                            Debes seleccionar una fecha.
+                        </div>
+                    </mat-form-field>
+                </div>
+    
+                </div>
+        </form>
+    </div>
+    
+    <div mat-dialog-actions>
+        <button mat-dialog-close mat-button color="primary">Cancelar</button>
+        <button (click)="onSubmit()" color="primary"  mat-button>Guardar</button>
+    </div>

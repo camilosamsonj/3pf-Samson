@@ -20,8 +20,57 @@ export class CoursesComponent {
    this.courses$ =  this.coursesService.getCourses$();
   }
 
-  addCourse(): void {
-    this.matDialog.open(CoursesDialogComponent)
+  selectedDate: Date[] = [];
+  
+  addDate(fecha: Date): void {
+      this.selectedDate.push(fecha);
   }
+
+
+
+  addCourse(): void {
+    this.matDialog.open(CoursesDialogComponent).afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+
+          const startDate = this.selectedDate.length > 0 ? this.selectedDate[0]:null;
+          const endDate = this.selectedDate.length > 1 ? this.selectedDate[1]:null;
+
+
+          this.coursesService.createCourse$({
+            id: new Date().getTime(),
+            name: result.name,
+            startDate: startDate,
+            endDate: endDate
+
+          });
+        }
+      }
+    });
+  }
+
+
+  editCourse(course: Course): void {
+
+    this.matDialog.open(CoursesDialogComponent, {
+      data: course,
+    })
+    .afterClosed()
+    .subscribe({
+      next: (v) => {
+        if (!!v) {
+          this.coursesService.updateCourse$({ ...course, ...v });
+        }
+      },
+    });
+  }
+
+
+  deleteCourse(courseId: number): void {
+    if(confirm('¿Está seguro de eliminar el curso?')){
+      this.coursesService.deleteCourse$(courseId);
+    }
+  }
+    
 
 }

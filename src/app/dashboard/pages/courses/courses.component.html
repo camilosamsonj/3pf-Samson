@@ -4,4 +4,9 @@
     <button (click)="addCourse()" mat-raised-button color="primary"> Agregar Curso </button>
 </div>
 
-<app-courses-table [dataSource]="(courses$ | async) || []"></app-courses-table>
+<app-courses-table 
+[dataSource]="(courses$ | async) || []"
+(editCourse)="editCourse($event)"
+(deleteCourse)="deleteCourse($event)"
+
+></app-courses-table>
