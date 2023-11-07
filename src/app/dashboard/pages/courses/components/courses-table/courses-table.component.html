@@ -6,40 +6,35 @@
     <!-- Id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> # </th>
-      <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+      <td mat-cell *matCellDef="let course"> {{course.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
-    <!-- <ng-container matColumnDef="name"> 
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td  appFontSizeModify [tamano]="'20px'"  mat-cell *matCellDef="let user"> {{user.name}} </td>
-    </ng-container> -->
-
-    <!--Full Name Column-->
-    <ng-container matColumnDef="fullName"> 
-      <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
-      <td  appFontSizeModify [tamano]="'20px'"  mat-cell *matCellDef="let user"> {{user.fullName}} </td>
+    <ng-container matColumnDef="name"> 
+      <th mat-header-cell *matHeaderCellDef> Nombre Curso</th>
+      <td mat-cell *matCellDef="let course"> {{course.name}} </td>
     </ng-container>
 
-    <!-- lastName Column -->
-    <!-- <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef> Apellido </th>
-        <td appFontSizeModify [tamano]="'20px'"  mat-cell *matCellDef="let user"> {{user.lastName}} </td>
-      </ng-container> -->
   
-      <!-- Email Column -->
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> E-mail </th>
-        <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+      <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
+        <td mat-cell *matCellDef="let course"> {{course.startDate}} </td>
       </ng-container>
   
+     <!-- End Date Column -->
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha Término </th>
+        <td mat-cell *matCellDef="let course">  {{course.endDate}}
+        </td>
+    </ng-container>
     
     <!-- actions Column -->
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let user"> 
           
-          <button (click)="viewDetail(user.id)" mat-raised-button color="accent">
+          <!-- <button (click)="viewDetail(user.id)" mat-raised-button color="accent">
                 <mat-icon>visibility</mat-icon>
           </button>
           <button (click)="onEditUser.emit(user)" mat-raised-button color="primary">
@@ -47,7 +42,7 @@
           </button>
           <button (click)="deleteUser.emit(user.id)" mat-raised-button color="warn">
                 <mat-icon>delete</mat-icon> 
-            </button>
+            </button> -->
         </td>
     </ng-container>
   

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../models';
+import { Router } from '@angular/router';
 
 
 
@@ -28,5 +29,11 @@ export class UsersTableComponent {
     'fullName', 
     'email', 
     'actions']
+
+  constructor(private router: Router) {}
+
+  viewDetail(userId: number): void {
+    this.router.navigate(['dashboard', 'users', 'detail', userId]);
+  }
 } 
 

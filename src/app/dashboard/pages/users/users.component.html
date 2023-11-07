@@ -1,4 +1,4 @@
-<button (click)="openUsersDialog ()" mat-flat-button color="primary">
+<button (click)="openUsersDialog ()" mat-raised-button color="primary" class="mb-3">
     <mat-icon> add </mat-icon>Registrar Alumno
 </button>
 
@@ -8,3 +8,5 @@
     (deleteUser)="onDeleteUser($event)" 
     (onEditUser)="onEditUser($event)"
     ></app-users-table>
+
+    <router-outlet></router-outlet>

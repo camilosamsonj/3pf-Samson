@@ -1,0 +1,7 @@
+<h1>Cursos</h1>
+
+<div class="d-flex justify-content-end mb-3">
+    <button (click)="addCourse()" mat-raised-button color="primary"> Agregar Curso </button>
+</div>
+
+<app-courses-table [dataSource]="(courses$ | async) || []"></app-courses-table>

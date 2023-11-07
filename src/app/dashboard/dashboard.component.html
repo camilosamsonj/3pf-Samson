@@ -11,13 +11,15 @@
   <app-sidebar></app-sidebar>
   </mat-drawer>
  <!--/SIDEBAR -->
- <!--TOOLBAR-->
-  <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
+
     
   <!--CONTENIDO-->
   <div class="example-sidenav-content">
-    <main>
-      <app-users></app-users>
+     <!--TOOLBAR-->
+  <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
+    <main style="padding: 1rem">
+      <!-- <app-users></app-users> -->
+      <router-outlet></router-outlet>
     </main>
   </div>
   <!--/CONTENIDO-->

@@ -8,6 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     UsersDialogComponent,
     UsersTableComponent,
+    UserDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -23,12 +26,14 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
 
   ],
   exports: [
     UsersComponent,
-    UsersTableComponent
+    UsersTableComponent, 
+    UserDetailComponent,
   ]
     
 })
