@@ -8,15 +8,15 @@ import { Course } from 'src/app/dashboard/pages/courses/models/';
 })
 export class CoursesTableComponent {
 
-  
-
   @Input()
   dataSource: Course[] = [];
-  displayedColumns = ['id', 'name', 'startDate', 'endDate', 'actions']
+
 
   @Output()
- editCourse = new EventEmitter<Course>();
+ editCourse = new EventEmitter();
   @Output()
- deleteCourse = new EventEmitter<number>();
+ deleteCourse = new EventEmitter();
+
+ displayedColumns = ['id', 'name', 'startDate', 'endDate', 'actions']
 
 }

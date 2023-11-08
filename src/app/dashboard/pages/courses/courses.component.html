@@ -6,7 +6,7 @@
 
 <app-courses-table 
 [dataSource]="(courses$ | async) || []"
-(editCourse)="editCourse($event)"
-(deleteCourse)="deleteCourse($event)"
+(editCourse)="onEditCourse($event)"
+(deleteCourse)="onDeleteCourse($event)"
 
 ></app-courses-table>

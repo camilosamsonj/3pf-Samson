@@ -4,6 +4,9 @@ import { CoursesComponent } from './courses.component';
 import { CoursesTableComponent } from './components/courses-table/courses-table.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
+import { CoursesRoutingModule } from './courses-routing.module';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -11,11 +14,14 @@ import { CoursesDialogComponent } from './components/courses-dialog/courses-dial
   declarations: [
     CoursesComponent,
     CoursesTableComponent,
-    CoursesDialogComponent
+    CoursesDialogComponent,
+    CourseDetailComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    CoursesRoutingModule,
+    RouterModule,
   ]
 })
 export class CoursesModule { }
