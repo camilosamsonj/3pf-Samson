@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from '../../courses.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,9 +10,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class CoursesDialogComponent {
   
-  nameControl = new FormControl();
-  startDateControl = new FormControl();
-  endDateControl = new FormControl();
+  nameControl = new FormControl('', [Validators.required, Validators.minLength(2)]);
+  startDateControl = new FormControl('', [Validators.required]);
+  endDateControl = new FormControl('', [Validators.required]);
   
   
   courseForm = new FormGroup({
@@ -30,9 +30,13 @@ export class CoursesDialogComponent {
       this.coursesService.getCourseById$(courseId).subscribe({
         next: (c) => {
           if (c) {
-            console.log('Antes del PatchValue:', this.courseForm.value);
-            this.courseForm.patchValue(c);
-            console.log('despues del PatchValue:', this.courseForm.value);
+            const formattedCourse = {
+              ...c,
+              startDate: c.startDate.toISOString().split('T')[0], // Formato YYYY-MM-DD
+              endDate: c.endDate.toISOString().split('T')[0],   // Formato YYYY-MM-DD
+            };
+
+            this.courseForm.patchValue(formattedCourse);
           }
         },
       });
