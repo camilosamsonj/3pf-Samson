@@ -9,7 +9,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { RouterModule } from '@angular/router';
+import { UsersRoutingModule } from './users-routing.module';
 
 
 
@@ -27,7 +27,7 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
-    RouterModule,
+    UsersRoutingModule
 
   ],
   exports: [

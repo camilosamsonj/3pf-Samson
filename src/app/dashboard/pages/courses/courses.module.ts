@@ -7,6 +7,7 @@ import { CoursesDialogComponent } from './components/courses-dialog/courses-dial
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     CoursesRoutingModule,
-    RouterModule,
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class CoursesModule { }

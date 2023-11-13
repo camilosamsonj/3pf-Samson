@@ -20,45 +20,54 @@ export class UsersService {
         name: "Tony",
         lastName: "Stark",
         email: "ironman@shield.com",
-  
+        token: "",
+        role: ""
       },
       {
         id: 2,
         name: "Bruce",
         lastName: "Banner",
         email: "hulk@shield.com",
+        token: "",
+        role: ""
       },
       {
         id: 3,
         name: "Natasha",
         lastName: "Romanoff",
         email: "black.widow@shield.com",
+        token: "",
+        role: ""
       },
       {
         id: 4,
         name: "Steve",
         lastName: "Rogers",
         email: "captainamerica@shield.com",
+        token: "",
+        role: ""
       },
       {
         id: 5,
         name: "Nick",
         lastName: "Fury",
         email: "nickfury@shield.com",
+        token: "",
+        role: ""
       },
       {
         id: 6,
         name: "Wanda",
         lastName: "Maximoff",
         email: "scarletwitch@shield.com",
+        token: "",
+        role: ""
       },
     ]);
    }
 
-
   transformUser(user: User): User {
-    const fullName = `${user.name} ${user.lastName}`;
-    console.log('Transformed User: ', { ...user, fullName});
+    const fullName = `${user.name} ${user.lastName}`;  
     return { ...user, fullName };
   }
 

@@ -1,0 +1,18 @@
+<h1>Sign In</h1>
+<div>
+<form [formGroup]="loginForm">
+
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput type="email" />
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput type="password" />
+      </mat-form-field>
+ 
+    <button (click)="login()" mat-flat-button color="primary">
+      Iniciar sesión
+    </button>
+  </form>
+</div>

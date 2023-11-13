@@ -11,8 +11,9 @@ import { MatTable, MatTableModule } from '@angular/material/table';
 import { FullnamePipe } from './pipes/fullname.pipe';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
 import { FontSizeModifyDirective } from './font-size-modify.directive';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     FullnamePipe,
@@ -36,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     FontSizeModifyDirective,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
          
   ]
 })

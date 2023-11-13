@@ -14,7 +14,7 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
         component: CoursesComponent,
       },
       {
-        path: 'id',
+        path: ':id',
         component: CourseDetailComponent,
       },
     ]),
@@ -23,4 +23,4 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
   providers: [],
   
 })
-export class CoursesRoutingModule { }
+export class CoursesRoutingModule {}

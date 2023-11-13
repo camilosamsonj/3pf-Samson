@@ -7,8 +7,7 @@ import { UsersModule } from './pages/users/users.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {MatListModule} from '@angular/material/list';
-import { RouterModule } from '@angular/router';
-import { CoursesModule } from './pages/courses/courses.module';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 
@@ -23,11 +22,8 @@ import { CoursesModule } from './pages/courses/courses.module';
     MatSidenavModule,
     MatToolbarModule,
     SharedModule, 
-    UsersModule,
     MatListModule,
-    RouterModule,
-    CoursesModule,
-
+    DashboardRoutingModule,
   ],
   exports: [
     DashboardComponent,

@@ -47,17 +47,17 @@ export class CoursesComponent {
 
   onEditCourse(courseId: number): void {
     this.matDialog
-      .open(CoursesDialogComponent, {
-        data: courseId,
-      })
-      .afterClosed()
-      .subscribe({
-        next: (result) => {
-          if (!!result) {
-            this.courses$ = this.coursesService.editCourse$(courseId, result);
-          }
-        },
-      });
+    .open(CoursesDialogComponent, {
+      data: courseId,
+    })
+    .afterClosed()
+    .subscribe({
+      next: (result) => {
+        if (!!result) {
+          this.courses$ = this.coursesService.editCourse$(courseId, result);
+        }
+      },
+    });
   }
 
   onDeleteCourse(courseId: number): void {

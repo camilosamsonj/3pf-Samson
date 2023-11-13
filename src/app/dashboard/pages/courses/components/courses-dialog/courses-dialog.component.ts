@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CoursesService } from '../../courses.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-courses-dialog',
@@ -24,6 +25,7 @@ export class CoursesDialogComponent {
   constructor(
     private matDialogRef: MatDialogRef<CoursesDialogComponent>, 
     private coursesService: CoursesService, 
+    private datePipe: DatePipe,
     @Inject(MAT_DIALOG_DATA) private courseId?: number
   ){
     if (courseId) {
@@ -32,8 +34,8 @@ export class CoursesDialogComponent {
           if (c) {
             const formattedCourse = {
               ...c,
-              startDate: c.startDate.toISOString().split('T')[0], // Formato YYYY-MM-DD
-              endDate: c.endDate.toISOString().split('T')[0],   // Formato YYYY-MM-DD
+              startDate: c.startDate ? this.datePipe.transform(c.startDate, 'yyyy-MM-dd') : null ,
+              endDate: c.endDate ? this.datePipe.transform(c.endDate, 'yyyy-MM-dd') : null,
             };
 
             this.courseForm.patchValue(formattedCourse);
