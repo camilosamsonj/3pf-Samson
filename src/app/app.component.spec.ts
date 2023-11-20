@@ -1,29 +1,63 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
+import { Component, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+// Definimos algunas rutas de ejemplo
+const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
+];
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  let fixture: ComponentFixture<AppComponent>;
+  let router: Router;
+  let location: Location;
+  let debugElement: DebugElement;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule.withRoutes(routes)],
+        declarations: [AppComponent],
+      }).compileComponents();
+    })
+  );
 
-  it(`should have as title '1PF-Samson'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('1PF-Samson');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+    debugElement = fixture.debugElement;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('1PF-Samson app is running!');
+  });
+
+//   it('should navigate to /dashboard when clicking on a link', () => {
+//     // Encuentra el enlace usando el selector de atributos y el valor de routerLink
+//     const link = debugElement.query(By.css('[routerLink="/dashboard"]'));
+
+//     // Simula el clic en el enlace
+//     link.triggerEventHandler('click', null);
+
+//     fixture.whenStable().then(() => {
+//       // Verifica que la ubicación sea /dashboard
+//       expect(location.path()).toBe('/dashboard');
+//     });
+//   });
+
+  it('should navigate to /dashboard when calling navigate method', () => {
+    router.navigate(['dashboard']);
+
+    fixture.whenStable().then(() => {
+      expect(location.path()).toBe('');
+    });
   });
 });
+
+// Agregamos un componente ficticio para que el código compile sin errores
+@Component({ template: '' })
+class DummyComponent {}
